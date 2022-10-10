@@ -2,8 +2,10 @@ import random
 yutt_pan = {
 }
 
-my_mal = {1:0, 2:0, 3:0, 4:0}
-your_mal = {5:0, 6:0, 7:0, 8:0}
+my_mal = {'A': [0,0,0], 'B':[0,0,0], 'C':[0,0,0], 'D':[0,0,0]}
+my_cnt = 0
+your_mal = {'E':[0,0,0], 'F':[0,0,0], 'G':[0,0,0], 'H':[0,0,0]}
+your_cnt = 0
 
 def dice_yutt() :
     ## 평평한 면이 앞면
@@ -31,10 +33,27 @@ def make_yutt_result() :
                 result += 1
     return result
 
-get_result = make_yutt_result()
+def move_result(number) :
+    if number == 0 :
+        return 5
+    else :
+        return number
 
-# if get_result == 0 or get_result == 5 :
-# else :
-#
+# print(get_result)
 
-print(get_result)
+my_cnt += 1
+while my_cnt > 0 :
+    my_result = move_result(make_yutt_result())
+    if my_result < 4  :
+        my_cnt -= 1
+    else :
+        my_cnt -= 1
+        my_cnt += 1
+    print(my_mal)
+    a = input("어느 말을 고르시겠습니까?").upper()
+    my_mal[a] = [0, 0, my_result]
+    print(my_mal[a])
+
+
+# if my_cnt > 0 :
+
